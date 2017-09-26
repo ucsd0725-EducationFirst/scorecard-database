@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.2.6",
-  "description": "A sample Node.js app using Express 4",
+  "name": "Scorecard-Database",
+  "version": "0.0.1",
+  "description": "Endpoint for querying data from the US Dept. of Ed. College Scorecard",
   "engines": {
     "node": "6.11.1"
   },
@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "ejs": "2.5.6",
-    "express": "4.15.2"
+    "express": "4.15.2",
+    "pg": "7.3.0"
   },
   "devDependencies": {
     "request": "^2.81.0",
@@ -20,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/ucsd0725-EducationFirst/scorecard-database"
   },
   "keywords": [
     "node",
