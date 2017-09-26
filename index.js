@@ -98,6 +98,9 @@ function BuildStatement(equals, fields, ordered) {
         stmt += f.join(" AND ");
     }
     if (equals.length + fields.length > 0) {
+        if (ordered.length > 0) {
+            stmt += " AND " + ordered + " > 0";
+        }
         stmt += ")";
     }
 
