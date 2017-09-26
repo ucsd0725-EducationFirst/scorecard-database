@@ -82,15 +82,12 @@ function BuildStatement(equals, fields, ordered) {
     var stmt = "SELECT * FROM scorecard";
 
     if (equals.length + fields.length > 0) {
-        stmt += " WHERE ";
+        stmt += " WHERE (";
     }
-
     var e = [];
     equals.forEach(function(eq) { e.push(eq[0] + " = " + eq[1]); });
-
     var f = [];
     fields.forEach(function(field) { f.push(field + " = true"); });
-
     if (e.length > 0) {
         stmt += e.join(", ");
         if (f.length > 0) {
@@ -99,6 +96,9 @@ function BuildStatement(equals, fields, ordered) {
     }
     if (f.length > 0) {
         stmt += f.join(", ");
+    }
+    if (equals.length + fields.length > 0) {
+        stmt += ")";
     }
 
     if (ordered.length > 0) {
