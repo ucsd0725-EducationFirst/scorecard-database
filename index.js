@@ -16,11 +16,11 @@ app.get("/v1", function(request, response) {
 
     client.connect();
     client.query("SELECT * FROM scorecard WHERE state = 'CA';")
-        .then(res => console.log(JSON.stringify(res.rows[0])))
-        .catch(e => console.log(e.stack));
-    client.end();
-
-    response.json({message: "hello"});
+        .then((res) => {
+            response.json({message: "hello", results: JSON.stringify(res.rows)});
+        })
+        .catch(e => console.log(e.stack))
+        .finally(() => client.end())
 });
 
 app.listen(app.get("port"), function() {
