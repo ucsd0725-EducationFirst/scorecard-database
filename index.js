@@ -127,6 +127,7 @@ app.get("/v1", function(request, response) {
         }
     }
     var stmt = BuildStatement(equals, fields, ordered);
+    console.log(stmt);
 
     const client = new Client({
         connectionString: process.env.DATABASE_URL,
