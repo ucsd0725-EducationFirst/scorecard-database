@@ -89,13 +89,13 @@ function BuildStatement(equals, fields, ordered) {
     var f = [];
     fields.forEach(function(field) { f.push(field + " = true"); });
     if (e.length > 0) {
-        stmt += e.join(", ");
+        stmt += e.join(" AND ");
         if (f.length > 0) {
-            stmt += ", "
+            stmt += " AND "
         }
     }
     if (f.length > 0) {
-        stmt += f.join(", ");
+        stmt += f.join(" AND ");
     }
     if (equals.length + fields.length > 0) {
         stmt += ")";
