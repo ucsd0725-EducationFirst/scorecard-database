@@ -3,15 +3,16 @@ var url = require("url");
 var app = express();
 
 const { Client } = require('pg');
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-});
 
 app.set("port", (process.env.PORT || 5000));
 
 app.get("/v1", function(request, response) {
     var query = url.parse(request.url, true).query;
+
+    const client = new Client({
+        connectionString: process.env.DATABASE_URL,
+        ssl: true,
+    });
 
     client.connect();
     client.query("SELECT * FROM scorecard WHERE state = 'CA';")
