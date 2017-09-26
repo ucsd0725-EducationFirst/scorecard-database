@@ -102,7 +102,7 @@ function BuildStatement(equals, fields, ordered) {
     }
 
     if (ordered.length > 0) {
-        stmt += " ORDERED BY " + ordered + " DESC";
+        stmt += " ORDER BY " + ordered + " DESC";
     }
 
     return stmt + ";";
