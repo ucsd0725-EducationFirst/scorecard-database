@@ -79,7 +79,7 @@ function OrganizeSchool(json) {
 }
 
 function BuildStatement(equals, fields, ordered) {
-    var stmt = "SELECT FROM scorecard *";
+    var stmt = "SELECT * FROM scorecard";
 
     if (equals.length + fields.length > 0) {
         stmt += " WHERE ";
@@ -118,7 +118,7 @@ app.get("/v1", function(request, response) {
     for (var k in query) {
         switch (k) {
             case "state":
-                equals.push([k, query[k].toUpperCase()]);
+                equals.push([k, "'" + query[k].toUpperCase() + "'"]);
                 break;
             case "ordered":
                 ordered = query[k];
