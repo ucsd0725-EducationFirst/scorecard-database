@@ -20,7 +20,7 @@ app.get("/v1", function(request, response) {
             response.json({message: "hello", results: JSON.stringify(res.rows)});
         })
         .catch(e => console.log(e.stack))
-        .finally(() => client.end())
+        .then(() => client.end())
 });
 
 app.listen(app.get("port"), function() {
