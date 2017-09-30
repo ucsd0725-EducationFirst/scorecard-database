@@ -140,13 +140,26 @@ app.get("/v1", function(request, response) {
     }
     var stmt = BuildStatement(equals, fields, ordered);
     console.log(stmt);
+    var STMT = stmt.toUpperCase();
+    var naughtyKeywords = ["UPDATE", "DELETE", "DROP", "INSERT", "CREATE", "ALTER"];
+    for (var i = 0; i < naughtyKeywords.length; i++) {
+        var kw = naughtyKeywords[i];
+        if (STMT.includes(kw)) {
+            response.json({ error: true, message: "nice try" });
+            return;
+        }
+    }
 
     const client = new Client({
         connectionString: process.env.DATABASE_URL,
         ssl: true,
     });
 
-    client.connect();
+    client.connect()
+        .catch((e) => {
+            console.log(e.stack);
+            response.json({ error: true })
+        })
     client.query(stmt)
         .then((res) => {
             var schools = []
