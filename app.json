@@ -2,7 +2,7 @@
   "name": "Scorecard-Database",
   "description": "Endpoint for querying data from the US Dept. of Ed. College Scorecard",
   "repository": "https://github.com/ucsd0725-EducationFirst/scorecard-database",
-  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+  "logo": "https://cdn.jsdelivr.net/gh/heroku/node-js-getting-started@master/public/node.svg",
   "keywords": ["node", "heroku", "college", "scorecard"],
   "image": "heroku/nodejs"
 }
